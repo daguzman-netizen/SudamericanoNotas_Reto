@@ -1,0 +1,663 @@
+﻿<ContentPage
+    x:Class="SudamericanoNotas.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="SudamericanoNotas"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F2F6FC">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="Navy">#101B36</Color>
+            <Color x:Key="NavyLight">#1A2B50</Color>
+            <Color x:Key="Cyan">#20D4E8</Color>
+            <Color x:Key="TextDark">#18243D</Color>
+            <Color x:Key="TextMuted">#73809A</Color>
+            <Color x:Key="CardWhite">#FFFFFF</Color>
+            <Color x:Key="PageBackground">#F2F6FC</Color>
+            <Color x:Key="InputBackground">#F5F8FD</Color>
+            <Color x:Key="BorderColor">#E2EAF5</Color>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+            </Style>
+
+            <Style x:Key="SectionTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="19" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource Navy}" />
+            </Style>
+
+            <Style x:Key="FieldTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource TextMuted}" />
+            </Style>
+
+            <Style x:Key="GradeEntry" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource InputBackground}" />
+                <Setter Property="TextColor" Value="{StaticResource Navy}" />
+                <Setter Property="PlaceholderColor" Value="#9AA8BC" />
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="HeightRequest" Value="52" />
+                <Setter Property="Keyboard" Value="Numeric" />
+                <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
+                <Setter Property="Margin" Value="0,5,0,0" />
+            </Style>
+
+            <Style x:Key="CardBorder" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="{StaticResource CardWhite}" />
+                <Setter Property="Stroke" Value="{StaticResource BorderColor}" />
+                <Setter Property="StrokeThickness" Value="1" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 22" />
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow
+                            Brush="#14284A"
+                            Offset="0,5"
+                            Radius="16"
+                            Opacity="0.07" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- ENCABEZADO INSTITUCIONAL -->
+        <Border
+            Grid.Row="0"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 0,0,28,28"
+            Padding="24,25,24,28">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#101B36" Offset="0.0" />
+                    <GradientStop Color="#203B68" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+
+                <Border
+                    Grid.Column="0"
+                    WidthRequest="62"
+                    HeightRequest="62"
+                    VerticalOptions="Start"
+                    BackgroundColor="#243D68"
+                    Stroke="#42628D"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 19">
+
+                    <Grid>
+                        <Label
+                            Text="SA"
+                            FontSize="25"
+                            FontAttributes="Bold"
+                            TextColor="#FFFFFF"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+
+                        <Border
+                            WidthRequest="10"
+                            HeightRequest="10"
+                            BackgroundColor="{StaticResource Cyan}"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 5"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start"
+                            Margin="0,7,7,0" />
+                    </Grid>
+                </Border>
+
+                <VerticalStackLayout
+                    Grid.Column="1"
+                    Spacing="5"
+                    VerticalOptions="Center">
+
+                    <Label
+                        Text="INSTITUTO SUDAMERICANO"
+                        FontSize="11"
+                        CharacterSpacing="2"
+                        FontAttributes="Bold"
+                        TextColor="#8FEAF3" />
+
+                    <Label
+                        Text="Control académico"
+                        FontSize="27"
+                        FontAttributes="Bold"
+                        TextColor="#FFFFFF"
+                        LineBreakMode="WordWrap" />
+
+                    <Label
+                        Text="Tu esfuerzo de hoy construye tu futuro."
+                        FontSize="13"
+                        TextColor="#D0DCEE" />
+
+                    <HorizontalStackLayout
+                        Spacing="7"
+                        Margin="0,8,0,0"
+                        VerticalOptions="Center">
+
+                        <Border
+                            BackgroundColor="#253E64"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 10"
+                            Padding="10,5">
+
+                            <Label
+                                Text="EVALUACIÓN"
+                                FontSize="10"
+                                FontAttributes="Bold"
+                                TextColor="#FFFFFF" />
+                        </Border>
+
+                        <Ellipse
+                            WidthRequest="7"
+                            HeightRequest="7"
+                            Fill="{StaticResource Cyan}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Text="Registro de calificaciones"
+                            FontSize="11"
+                            TextColor="#D0DCEE"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <ScrollView
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Never">
+
+            <VerticalStackLayout
+                Padding="22,24,22,30"
+                Spacing="20">
+
+                <!-- INTRODUCCIÓN -->
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+
+                    <VerticalStackLayout Spacing="4">
+                        <Label
+                            Text="Panel de evaluación"
+                            FontSize="23"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource Navy}" />
+
+                        <Label
+                            Text="Ingresa los datos y calcula el resultado."
+                            FontSize="13"
+                            TextColor="{StaticResource TextMuted}" />
+                    </VerticalStackLayout>
+
+                    <Border
+                        Grid.Column="1"
+                        BackgroundColor="#DDF9FC"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 14"
+                        Padding="12,9"
+                        VerticalOptions="Center">
+
+                        <Label
+                            Text="● EN LÍNEA"
+                            FontSize="10"
+                            FontAttributes="Bold"
+                            TextColor="#087D8B" />
+                    </Border>
+                </Grid>
+
+                <!-- DATOS DEL ESTUDIANTE -->
+                <Border Style="{StaticResource CardBorder}">
+                    <VerticalStackLayout Spacing="17">
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+
+                            <Border
+                                WidthRequest="44"
+                                HeightRequest="44"
+                                BackgroundColor="#E3F9FC"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 14">
+
+                                <Label
+                                    Text="01"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    TextColor="#078D9B"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Border>
+
+                            <VerticalStackLayout
+                                Grid.Column="1"
+                                Spacing="3"
+                                VerticalOptions="Center">
+
+                                <Label
+                                    Text="Datos del estudiante"
+                                    Style="{StaticResource SectionTitle}" />
+
+                                <Label
+                                    Text="Identifica al estudiante y la fecha."
+                                    FontSize="12"
+                                    TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label
+                                Text="ESTUDIANTE"
+                                Style="{StaticResource FieldTitle}" />
+
+                            <Border
+                                BackgroundColor="{StaticResource InputBackground}"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 13"
+                                Padding="10,0">
+
+                                <Picker
+                                    x:Name="EstudiantePicker"
+                                    Title="Selecciona un estudiante"
+                                    TextColor="{StaticResource Navy}"
+                                    TitleColor="#9AA8BC"
+                                    FontSize="15"
+                                    HeightRequest="85" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label
+                                Text="FECHA DE EVALUACIÓN"
+                                Style="{StaticResource FieldTitle}" />
+
+                            <Border
+                                BackgroundColor="{StaticResource InputBackground}"
+                                Stroke="{StaticResource BorderColor}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 13"
+                                Padding="10,0">
+
+                                <DatePicker
+                                    x:Name="FechaEvaluacion"
+                                    Format="dd/MM/yyyy"
+                                    TextColor="{StaticResource Navy}"
+                                    FontSize="15"
+                                    HeightRequest="52" />
+                            </Border>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- PARCIAL 1 -->
+                <Border Style="{StaticResource CardBorder}">
+                    <VerticalStackLayout Spacing="16">
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+
+                            <Border
+                                WidthRequest="46"
+                                HeightRequest="46"
+                                BackgroundColor="#E6F0FF"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 15">
+
+                                <Label
+                                    Text="01"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    TextColor="#3168C9"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Border>
+
+                            <VerticalStackLayout
+                                Grid.Column="1"
+                                Spacing="3"
+                                VerticalOptions="Center">
+
+                                <Label
+                                    Text="Primer parcial"
+                                    Style="{StaticResource SectionTitle}" />
+
+                                <Label
+                                    Text="Componentes de evaluación"
+                                    FontSize="12"
+                                    TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <Grid
+                            ColumnDefinitions="*,*"
+                            ColumnSpacing="14">
+
+                            <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                <Label
+                                    Text="SEGUIMIENTO"
+                                    Style="{StaticResource FieldTitle}" />
+
+                                <Entry
+                                    x:Name="Seguimiento1Entry"
+                                    Style="{StaticResource GradeEntry}"
+                                    Placeholder="0 - 10"
+                                    Keyboard="Numeric" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                <Label
+                                    Text="EXAMEN"
+                                    Style="{StaticResource FieldTitle}" />
+
+                                <Entry
+                                    x:Name="Examen1Entry"
+                                    Style="{StaticResource GradeEntry}"
+                                    Placeholder="0 - 10"
+                                    Keyboard="Numeric" />
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                        <Border
+                            BackgroundColor="#F0F6FF"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 13"
+                            Padding="14,12">
+
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label
+                                    Text="Resultado del parcial"
+                                    FontSize="13"
+                                    TextColor="#526887"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    x:Name="Parcial1Label"
+                                    Grid.Column="1"
+                                    Text="— / 5"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    TextColor="#245DC0"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- PARCIAL 2 -->
+                <Border Style="{StaticResource CardBorder}">
+                    <VerticalStackLayout Spacing="16">
+
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+
+                            <Border
+                                WidthRequest="46"
+                                HeightRequest="46"
+                                BackgroundColor="#E5FAF5"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 15">
+
+                                <Label
+                                    Text="02"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    TextColor="#11866F"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Border>
+
+                            <VerticalStackLayout
+                                Grid.Column="1"
+                                Spacing="3"
+                                VerticalOptions="Center">
+
+                                <Label
+                                    Text="Segundo parcial"
+                                    Style="{StaticResource SectionTitle}" />
+
+                                <Label
+                                    Text="Componentes de evaluación"
+                                    FontSize="12"
+                                    TextColor="{StaticResource TextMuted}" />
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <Grid
+                            ColumnDefinitions="*,*"
+                            ColumnSpacing="14">
+
+                            <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                <Label
+                                    Text="SEGUIMIENTO"
+                                    Style="{StaticResource FieldTitle}" />
+
+                                <Entry
+                                    x:Name="Seguimiento2Entry"
+                                    Style="{StaticResource GradeEntry}"
+                                    Placeholder="0 - 10"
+                                    Keyboard="Numeric" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                <Label
+                                    Text="EXAMEN"
+                                    Style="{StaticResource FieldTitle}" />
+
+                                <Entry
+                                    x:Name="Examen2Entry"
+                                    Style="{StaticResource GradeEntry}"
+                                    Placeholder="0 - 10"
+                                    Keyboard="Numeric" />
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                        <Border
+                            BackgroundColor="#EAF9F5"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 13"
+                            Padding="14,12">
+
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label
+                                    Text="Resultado del parcial"
+                                    FontSize="13"
+                                    TextColor="#487B70"
+                                    VerticalOptions="Center" />
+
+                                <Label
+                                    x:Name="Parcial2Label"
+                                    Grid.Column="1"
+                                    Text="— / 5"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    TextColor="#11866F"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- RESULTADO FINAL -->
+                <Border
+                    x:Name="EstadoBorder"
+                    Padding="22"
+                    Stroke="#344B73"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 24">
+
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#101B36" Offset="0.0" />
+                            <GradientStop Color="#1E3761" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <VerticalStackLayout Spacing="16">
+
+                        <Grid ColumnDefinitions="*,Auto">
+
+                            <VerticalStackLayout Spacing="4">
+                                <Label
+                                    Text="RESULTADO ACADÉMICO"
+                                    FontSize="11"
+                                    CharacterSpacing="1.5"
+                                    FontAttributes="Bold"
+                                    TextColor="#8FEAF3" />
+
+                                <Label
+                                    Text="Tu nota final"
+                                    FontSize="22"
+                                    FontAttributes="Bold"
+                                    TextColor="#FFFFFF" />
+                            </VerticalStackLayout>
+
+                            <Border
+                                Grid.Column="1"
+                                BackgroundColor="#263E64"
+                                Stroke="#46618B"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 14"
+                                Padding="12,8"
+                                VerticalOptions="Center">
+
+                                <Label
+                                    Text="SUDAMERICANO"
+                                    FontSize="9"
+                                    CharacterSpacing="1"
+                                    FontAttributes="Bold"
+                                    TextColor="#FFFFFF" />
+                            </Border>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+
+                            <VerticalStackLayout Spacing="0">
+                                <Label
+                                    x:Name="NotaFinalLabel"
+                                    Text="0.00"
+                                    FontSize="56"
+                                    FontAttributes="Bold"
+                                    TextColor="#FFFFFF"
+                                    LineBreakMode="NoWrap" />
+
+                                <Label
+                                    Text="sobre 10 puntos"
+                                    FontSize="13"
+                                    TextColor="#C2D0E6" />
+                            </VerticalStackLayout>
+
+                            <Border
+                                Grid.Column="1"
+                                BackgroundColor="#183F5B"
+                                Stroke="#287C91"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 17"
+                                Padding="13,12"
+                                VerticalOptions="Center">
+
+                                <VerticalStackLayout Spacing="5">
+                                    <Label
+                                        Text="ESTADO"
+                                        FontSize="10"
+                                        FontAttributes="Bold"
+                                        TextColor="#8FEAF3"
+                                        HorizontalTextAlignment="Center" />
+
+                                    <Label
+                                        x:Name="EstadoLabel"
+                                        Text="PENDIENTE"
+                                        FontSize="12"
+                                        FontAttributes="Bold"
+                                        TextColor="#FFFFFF"
+                                        HorizontalTextAlignment="Center" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
+
+                        <BoxView
+                            HeightRequest="1"
+                            Color="#405578"
+                            Margin="0,2" />
+
+                        <Label
+                            Text="Cada evaluación es una oportunidad para avanzar."
+                            FontSize="12"
+                            TextColor="#D0DCEE" />
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- BOTONES -->
+                <Grid
+                    ColumnDefinitions="1.5*,*"
+                    ColumnSpacing="12">
+
+                    <Button
+                        x:Name="CalcularButton"
+                        Grid.Column="0"
+                        Text="✦  Calcular resultado"
+                        Clicked="OnCalcularClicked"
+                        BackgroundColor="#12BFD2"
+                        TextColor="#10203B"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        CornerRadius="16"
+                        HeightRequest="56"
+                        Padding="10,12"
+                        Shadow="{Shadow Brush=#164E63, Offset='0,4', Radius=10, Opacity=0.18}" />
+
+                    <Button
+                        x:Name="LimpiarButton"
+                        Grid.Column="1"
+                        Text="Limpiar"
+                        Clicked="OnLimpiarClicked"
+                        BackgroundColor="#FFFFFF"
+                        TextColor="#344563"
+                        BorderColor="#D8E2EF"
+                        BorderWidth="1"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        CornerRadius="16"
+                        HeightRequest="56"
+                        Padding="10,12" />
+
+                </Grid>
+
+                <!-- PIE -->
+                <VerticalStackLayout
+                    Spacing="5"
+                    Padding="0,2,0,8">
+
+                    <Label
+                        Text="SUDAMERICANO  •  CONTROL ACADÉMICO"
+                        FontSize="10"
+                        CharacterSpacing="1.2"
+                        FontAttributes="Bold"
+                        TextColor="#8493AA"
+                        HorizontalTextAlignment="Center" />
+
+                    <Label
+                        Text="Una experiencia académica clara, moderna y cercana."
+                        FontSize="11"
+                        TextColor="#9AA7B9"
+                        HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>
